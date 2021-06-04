@@ -66,6 +66,21 @@ class ProviderController extends AbstractController
     }
 
     /**
+     * @Route("/delete/{id}", name="provider_delete2", methods={"GET"})
+     */
+    public function suppression(ProviderRepository $providerRepository, $id): Response
+    {
+        //return new Response("ID : ".$id);
+        
+        $provider = $providerRepository->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($provider);
+        $entityManager->flush();
+        return $this->redirectToRoute('provider_list');
+    }
+
+    /**
      * @Route("/new", name="provider_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

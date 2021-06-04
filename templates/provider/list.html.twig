@@ -9,6 +9,7 @@ Pour ajouter un fournisseur, cliquer <a href="{{path('provider_ajout')}}">ici</a
 		<th>Name</th>
 		<th>Email</th>
 		<th>Adress</th>
+        <th>Supprimer</th>
 	</tr>
 	{% for provider in providers %}
 		<tr>
@@ -16,6 +17,7 @@ Pour ajouter un fournisseur, cliquer <a href="{{path('provider_ajout')}}">ici</a
 			<td>{{provider.name}}</td>
 			<td>{{provider.email}}</td>
 			<td>{{provider.adress}}</td>
+            <td><a href="{{ path('provider_delete2', {'id': provider.id}) }}">Supprimer</a></td>
 		</tr>
 	{% endfor %}
 </table>
