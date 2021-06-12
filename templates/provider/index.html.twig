@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Provider index{% endblock %}
+{% block title %}{{parent()}} - Provider index{% endblock %}
 
 {% block body %}
-    <h1>Provider index</h1>
+{{parent()}} 
 
-    <table class="table">
+    <h1>Provider List (Twig Fils)</h1>
+
+    <table class="table table-striped table-bordered" border="1" align="center">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('provider_new') }}">Create new</a>
+    <a href="{{ path('provider_ajout') }}" class="btn btn-primary">Create new</a>
 {% endblock %}

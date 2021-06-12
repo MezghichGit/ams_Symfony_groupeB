@@ -22,7 +22,7 @@ class ProviderController extends AbstractController
     {
         $ecole="sesame";
         $providers = $providerRepository->findAll();
-        return $this->render('provider/list.html.twig',
+        return $this->render('provider/index.html.twig',
         ['providers'=>$providers, 'ecole'=>$ecole]
 );
 
@@ -86,16 +86,24 @@ class ProviderController extends AbstractController
     public function new(Request $request): Response
     {
         $provider = new Provider();
-        $form = $this->createForm(ProviderType::class, $provider);
-        $form->handleRequest($request);
+        //$provider->setName("ABC");
+        //$provider->setEmail("abc@gmail.com");
+        //$provider->setAdress("Tunis");
 
+        $form = $this->createForm(ProviderType::class, $provider);
+
+
+
+       // $form->handleRequest($request);
+        
+        /*
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($provider);
             $entityManager->flush();
 
             return $this->redirectToRoute('provider_index');
-        }
+        }*/
 
         return $this->render('provider/new.html.twig', [
             'provider' => $provider,

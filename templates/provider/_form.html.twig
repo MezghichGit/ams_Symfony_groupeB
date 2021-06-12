@@ -1,4 +1,20 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+ <div class="form-group">
+ <label for="Name">Provider Name:</label>
+    {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder': 'Taper nom provider'}}) }}
+ </div>
+
+ <div class="form-group">
+    <label for="Email">Provider Email:</label>
+    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+
+ </div>
+
+  <div class="form-group">
+    <label for="Name">Provider Adress:</label>
+    {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+ </div>
+
+    <button class="btn btn-success">{{ button_label|default('Submit') }}</button>
 {{ form_end(form) }}

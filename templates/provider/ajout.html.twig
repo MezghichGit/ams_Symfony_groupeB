@@ -1,22 +1,28 @@
-<h1 align="center">Nouveau fournisseur</h1>
-<form action="" method="POST">
-	<table align="center">
-		<tr>
-			<td>Name</td>
-			<td><input type="text" name="name"/></td>
-		</tr>
-        <tr>
-			<td>Email</td>
-			<td><input type="email" name="email"/></td>
-		</tr>
-        <tr>
-			<td>Adress</td>
-			<td><input type="text" name="adress"/></td>
-		</tr>
+{% extends 'base.html.twig' %}
 
-           <tr>
-			<td></td>
-			<td><input type="submit" value="Ajouter"/></td>
-		</tr>
-	</table>
+{% block body %}
+<h1 align="center">Nouveau fournisseur</h1>
+
+
+<form action="" method="POST">
+ 
+ <div class="form-group">
+    <label for="Name">Provider Name:</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="Email">Provider Email:</label>
+    <input type="email" name="email" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="Name">Provider Adress:</label>
+    <input <input type="text" name="adress" class="form-control">
+  </div>
+
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+
 </form>
+  {% endblock %}

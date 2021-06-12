@@ -6,6 +6,7 @@ use App\Entity\Provider;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProviderType extends AbstractType
 {
@@ -13,7 +14,12 @@ class ProviderType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('email')
+            ->add('email', TextType::class, array(
+    
+                'attr' => array(
+                    'placeholder' => 'Un email valide'
+                )
+           ))
             ->add('adress')
         ;
     }
