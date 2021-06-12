@@ -26,6 +26,21 @@ class ArticleController extends AbstractController
     }
 
     /**
+     * @Route("/searchByProvider", name="searchByProvider", methods={"POST"})
+     */
+    public function reserachByProvider(ArticleRepository $articleRepository, Request $request): Response
+    {
+        //return new Response("OK");
+     
+         $name = $request->get('nom');
+         //return new Response($name);
+
+        return $this->render('article/index.html.twig', [
+            'articles' => $articleRepository->findByProviderField($name)
+        ]);
+    }
+
+    /**
      * @Route("/new", name="article_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

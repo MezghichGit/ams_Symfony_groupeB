@@ -3,6 +3,17 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
+
+<form action="{{path('searchByProvider')}}" method="POST">
+
+ <div class="form-group">
+    <label for="Search">Chercher article par fournisseur:</label>
+    <input id="Search" name="nom" type="text" class="form-control" placeholder="nom article"/>
+
+     <input type="submit" class="btn btn-primary" placeholder="Chercher"/>
+ </div>
+
+</form>
     <h1>Article index</h1>
 
     <table class="table table-striped table-bordered">
