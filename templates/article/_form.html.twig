@@ -1,4 +1,28 @@
+
+
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="form-group">
+ <label for="Name">Article Name:</label>
+    {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder': 'Nom du produit'}}) }}
+ </div>
+
+ <div class="form-group">
+    <label for="Email">Article Price:</label>
+    {{ form_widget(form.prix, {'attr': {'class': 'form-control','placeholder': 'prix du produit'}}) }}
+
+ </div>
+
+  <div class="form-group">
+    <label for="Name">Article Quantity:</label>
+    {{ form_widget(form.quantite, {'attr': {'class': 'form-control','placeholder': 'quantité en stock du produit'}}) }}
+ </div>
+
+   <div class="form-group">
+    <label for="Name">Provider :</label>
+    {{ form_widget(form.provider, {'attr': {'class': 'form-control','placeholder': 'fournisseur du produit'}}) }}
+ </div>
+
+
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

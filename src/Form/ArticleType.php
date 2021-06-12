@@ -6,6 +6,8 @@ use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Provider;
 
 
 class ArticleType extends AbstractType
@@ -16,7 +18,13 @@ class ArticleType extends AbstractType
             ->add('name')
             ->add('prix')
             ->add('quantite')
-            ->add('provider')
+            ->add('provider', EntityType::class,[
+           
+                'class' => Provider::class,
+                'choice_label' => 'name',
+                'placeholder' => '-',
+                
+            ])
         ;
     }
 
