@@ -94,16 +94,16 @@ class ProviderController extends AbstractController
 
 
 
-       // $form->handleRequest($request);
+        $form->handleRequest($request);
         
-        /*
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($provider);
             $entityManager->flush();
 
             return $this->redirectToRoute('provider_index');
-        }*/
+        }
 
         return $this->render('provider/new.html.twig', [
             'provider' => $provider,

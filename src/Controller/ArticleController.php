@@ -35,11 +35,12 @@ class ArticleController extends AbstractController
     {
         //return new Response("OK");
      
+        $total =  $articleRepository->totalArticles();
          $name = $request->get('nom');
          //return new Response($name);
 
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findByProviderField($name)
+            'articles' => $articleRepository->findByProviderField($name),'total'=>$total
         ]);
     }
 
