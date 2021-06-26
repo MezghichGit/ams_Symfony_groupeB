@@ -5,7 +5,7 @@
 {% block body %}
 {{parent()}} 
 
-    <h1>Provider List (Twig Fils)</h1>
+    <h1>Providers List</h1>
 
     <table class="table table-striped table-bordered" border="1" align="center">
         <thead>
@@ -14,6 +14,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Adress</th>
+                <th>Photo</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ provider.name }}</td>
                 <td>{{ provider.email }}</td>
                 <td>{{ provider.adress }}</td>
+                <td><img src="{{asset('uploads/providers/'~ provider.logo )}}" width="100" height="100"/></td>
                 <td>
                     <a href="{{ path('provider_show', {'id': provider.id}) }}">show</a>
                     <a href="{{ path('provider_edit', {'id': provider.id}) }}">edit</a>

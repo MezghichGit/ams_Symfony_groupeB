@@ -28,7 +28,8 @@
                     <label for="exampleInputFile">Provider logo</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="providerlogo">
+                        <!--input name="logo" type="file" class="custom-file-input" id="providerlogo"-->
+                         {{ form_widget(form.logo, {'attr': {'id':'providerlogo','class': 'custom-file-input','placeholder': 'Enter provider logo','type':'file'}}) }}
                         <label class="custom-file-label" for="providerlogo">Choose file</label>
                       </div>
                       <div class="input-group-append">

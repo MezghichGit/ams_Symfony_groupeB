@@ -1,33 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1 align="center">Nouveau fournisseur</h1>
-
-
-<form action="" method="POST">
- 
- <div class="form-group">
-    <label for="Name">Provider Name:</label>
-    <input type="text" name="name" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="Email">Provider Email:</label>
-    <input type="email" name="email" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="Name">Provider Adress:</label>
-    <input <input type="text" name="adress" class="form-control">
-  </div>
-
-
-	<button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
-
 <!-- left column -->
-          <div class="col-md-6">
+          <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
@@ -35,26 +10,26 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form method="POST" action="" enctype='multipart/form-data'>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="providername">Name</label>
-                    <input type="text" class="form-control" id="providername" placeholder="Enter provider name">
+                    <input type="text" name="name" class="form-control" id="providername" placeholder="Enter provider name">
                   </div>
 
                   <div class="form-group">
                     <label for="provideremail">Email</label>
-                    <input type="email" class="form-control" id="provideremail" placeholder="Enter provider email">
+                    <input type="email" name="email" class="form-control" id="provideremail" placeholder="Enter provider email">
                   </div>
                   <div class="form-group">
                     <label for="provideradress">Adress</label>
-                    <input type="text" class="form-control" id="provideradress" placeholder="Enter provider adress">
+                    <input type="text" name="adress" class="form-control" id="provideradress" placeholder="Enter provider adress">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Provider logo</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="providerlogo">
+                        <input type="file" name="logo" class="custom-file-input" id="providerlogo">
                         <label class="custom-file-label" for="providerlogo">Choose file</label>
                       </div>
                       <div class="input-group-append">

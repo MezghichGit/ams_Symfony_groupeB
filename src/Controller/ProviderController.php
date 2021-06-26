@@ -50,6 +50,22 @@ class ProviderController extends AbstractController
           $provider->setEmail($email);
           $provider->setAdress($adress);
 
+          // Upload d'image
+          //$photoFile = $request->get('logo')->getData();
+          $photoFile = $request->files->get('logo');
+          //var_dump($photoFile);
+         
+            if ($photoFile) {
+            $originalphotoFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newPhotoFilename = $originalphotoFilename.'-'.uniqid().'.'.$photoFile->guessExtension();
+            try {
+                $photoFile->move($this->getParameter('provider_directory'),$newPhotoFilename);
+                } catch (FileException $e) {
+                return new Response("Problème d'upload d'image");
+                }
+            $provider->setLogo($newPhotoFilename);
+            // Fin Upload d'image
+            }
           $entityManager = $this->getDoctrine()->getManager();
           $entityManager->persist($provider);
           $entityManager->flush();
@@ -98,11 +114,28 @@ class ProviderController extends AbstractController
         
         
         if ($form->isSubmitted() && $form->isValid()) {
+
+                  // Upload d'image
+          $photoFile = $form->get('logo')->getData();
+         
+         
+            if ($photoFile) {
+            $originalphotoFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newPhotoFilename = $originalphotoFilename.'-'.uniqid().'.'.$photoFile->guessExtension();
+            try {
+                $photoFile->move($this->getParameter('provider_directory'),$newPhotoFilename);
+                } catch (FileException $e) {
+                return new Response("Problème d'upload d'image");
+                }
+            $provider->setLogo($newPhotoFilename);
+            // Fin Upload d'image
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($provider);
             $entityManager->flush();
 
-            return $this->redirectToRoute('provider_index');
+            return $this->redirectToRoute('provider_list');
         }
 
         return $this->render('provider/new.html.twig', [
@@ -132,7 +165,7 @@ class ProviderController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('provider_index');
+            return $this->redirectToRoute('provider_list');
         }
 
         return $this->render('provider/edit.html.twig', [
