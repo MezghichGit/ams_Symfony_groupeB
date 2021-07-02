@@ -53,6 +53,8 @@ class ProviderController extends AbstractController
           // Upload d'image
           //$photoFile = $request->get('logo')->getData();
           $photoFile = $request->files->get('logo');
+
+          //$photoFile = $form->get('logo')->getData();
           //var_dump($photoFile);
          
             if ($photoFile) {
