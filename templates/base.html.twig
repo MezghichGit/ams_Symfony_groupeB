@@ -206,6 +206,7 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
+      
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -217,9 +218,10 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            {% block menu %}
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{path('provider_list')}}" class="nav-link active">
+                <a href="{{path('provider_list')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Provider List</p>
                 </a>
@@ -231,9 +233,25 @@
                 </a>
               </li>
             </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{path('sendmail')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ecrire un message</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Boite réception</p>
+                </a>
+              </li>
+            </ul>
+            {% endblock %}
           </li>
           
-     
+  
       
        
         

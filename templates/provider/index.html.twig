@@ -2,6 +2,39 @@
 
 {% block title %}{{parent()}} - Provider index{% endblock %}
 
+
+  {% block menu %}
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{path('provider_list')}}" class="nav-link  active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Provider List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{path('provider_new')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Provider Add</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{path('sendmail')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ecrire un message</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Boite réception</p>
+                </a>
+              </li>
+            </ul>
+            {% endblock %}
+
 {% block body %}
 {{parent()}} 
 

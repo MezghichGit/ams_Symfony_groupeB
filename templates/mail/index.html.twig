@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+  {% block menu %}
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{path('provider_list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Provider List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{path('provider_new')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Provider Add</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{path('sendmail')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ecrire un message</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Boite réception</p>
+                </a>
+              </li>
+            </ul>
+            {% endblock %}
+{% block body %}
+
+<!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Ecrire un message</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="POST" action="">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="emailTo">Vers(email destinataire)</label>
+                    <input type="email" name="emailTo" class="form-control" id="emailTo" placeholder="Enter l'email destinatire">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="sujet">Sujet</label>
+                    <input type="text" name="sujet" class="form-control" id="sujet" placeholder="Enter le sujet de l'email">
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" class="form-control" id="message" placeholder="Enter votre message"></textarea>
+                  </div>      
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Envoyer votre message</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+           
+          
+
+                
+              
+                <!-- /input-group -->
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- Horizontal Form -->
+        
+            <!-- /.card -->
+
+          </div>
+          <!--/.col (left) -->
+  {% endblock %}
