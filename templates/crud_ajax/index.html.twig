@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block menu %}
+
+<style>
+.btnEx1{
+}
+</style>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{path('crud_ajax')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Provider Add Ajax</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{path('provider_list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Provider List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{path('provider_new')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Provider Add</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{path('sendmail')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ecrire un message</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{path('cours')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Conversion Devise</p>
+                </a>
+              </li>
+            </ul>
+            {% endblock %}
+{% block body %}
+
+
+
+<!-- left column -->
+
+          <div class="col-md-6">
+             <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add new Provider</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+             
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="providername">Name</label>
+                    <input type="text" name="name" class="form-control" id="providername" placeholder="Enter provider name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="provideremail">Email</label>
+                    <input type="email" name="email" class="form-control" id="provideremail" placeholder="Enter provider email">
+                  </div>
+                  <div class="form-group">
+                    <label for="provideradress">Adress</label>
+                    <input type="text" name="adress" class="form-control" id="provideradress" placeholder="Enter provider adress">
+                  </div>
+                  <!--div class="form-group">
+                    <label for="exampleInputFile">Provider logo</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="logo" class="custom-file-input" id="providerlogo">
+                        <label class="custom-file-label" for="providerlogo">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div-->
+                  
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button id="btnAdd" class="btn btn-primary">ADD</button>
+                </div>
+           
+            </div>
+          </div>
+          
+
+   
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+  $('#btnAdd').click(function () {
+
+var name = document.getElementById("providername").value;
+var email = document.getElementById("provideremail").value;
+var adress = document.getElementById("provideradress").value;
+
+// partie Ajax
+$.ajax({
+  url:'/provider/ajaxAdd',
+  type: "POST",
+  dataType: "json",
+  data: {
+       "name": name,
+	     "email": email,
+       "adress":adress
+     },
+  async: true,
+  success: function (res)
+    {
+        console.log(res)
+       // $('#resulat').text(res.resultat);
+       alert("Ajout avec succès");
+       //location.href = '/provider/list';
+    }
+});
+/// fin ajax
+
+
+});
+
+});
+</script>
+{% endblock %}
