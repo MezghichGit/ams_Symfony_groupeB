@@ -11,7 +11,7 @@ class DeviseController extends AbstractController
 {
     
     /**
-     * @Route("/cours", name="cours")
+     * @Route("/cours", name="cours",methods={"GET","POST"})
      */
 
      // injection de dépendence
@@ -26,11 +26,18 @@ class DeviseController extends AbstractController
 
     if($request->getMethod()=="POST")
     {
-            $devisecible = $request->get('devisecible');
+            $devisecible = $request->get('devise');
             $montant = $request->get('montant');
-            $resultat = $my_service->conversion($from,$devisecible,$montant);        
+            $resultat = $my_service->conversion($from,$devisecible,$montant); 
+            $resultat = number_format($resultat, 2);
+            $response = new Response(json_encode(array(
+                'resultat' =>  $resultat
+                )));
+            
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
     }
-    return $this->render('devise/index.html.twig', ['resultat' =>  $resultat]);
+    return $this->render('devise/index.html.twig');
        
 }
 
@@ -68,7 +75,7 @@ public function ajax(Request $request)
     'titre' => $titre,
     'producteur' => $producteur
     )));
-    
+
     $response->headers->set('Content-Type', 'application/json');
     return $response;
 }

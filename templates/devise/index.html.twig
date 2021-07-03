@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
   {% block menu %}
+
+<style>
+.btnEx1{
+}
+</style>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{path('provider_list')}}" class="nav-link">
@@ -37,10 +42,10 @@
 <div class="row">
     <div class="col">
         <h1>Cliquez sur un personnage</h1>
-            <button type="button" class="btn btn-warning">Homer</button>
-            <button type="button" class="btn btn-danger">Cartman</button>
-            <button type="button" class="btn btn-primary">Elsa</button>
-            <button type="button" class="btn btn-success">Lord Farquaad</button>
+            <button type="button" class="btnEx1 btn btn-warning">Homer</button>
+            <button type="button" class="btnEx1 btn btn-danger">Cartman</button>
+            <button type="button" class="btnEx1 btn btn-primary">Elsa</button>
+            <button type="button" class="btnEx1 btn btn-success">Lord Farquaad</button>
             <br><br>
             <div>
             <h2>Titre de l'oeuvre : <span id="titre"></span></h2>
@@ -61,7 +66,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="">
+              
 
               <label for="devisecible">Conversion de la source : USD</label>
                 <div class="card-body">
@@ -77,19 +82,19 @@
 
                   <div class="form-group">
                     <label for="montant">Montant</label>
-                    <input type="number" name="montant" class="form-control" id="montant" placeholder="Enter le sujet de l'email">
+                    <input type="number" name="montant" class="form-control" id="montant" placeholder="Donner un montant à convertir">
                   </div>
                   <div class="form-group">
                     <label for="message">Resultat</label>
-                    <textarea name="resulat" class="form-control" id="message" placeholder="résultat de conversion">{{resultat}}</textarea>
+                    <textarea name="resulat" class="form-control" id="resulat" placeholder="résultat de conversion"></textarea>
                   </div>      
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Convertir</button>
+                  <button  id="btnConversion" class="btn btn-primary">Convertir</button>
                 </div>
-              </form>
+              
             </div>
             <!-- /.card -->
 
@@ -117,10 +122,31 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-console.log("Script working properly");
+$('#btnConversion').click( function(){
+
+var devise = document.getElementById("devisecible").value;
+var montant = document.getElementById("montant").value;
+$.ajax({
+    url:'/cours',
+    type: "POST",
+    dataType: "json",
+    data: {
+    "devise": devise,
+    "montant": montant
+    },
+    async: true,
+    success: function (response)
+    {
+      console.log(response)
+      $('#resulat').text(response.resultat);
+    }
+});
+});
+
+
 ///// fonction ajax traitement employer
 
-$('.btn').click( function(){
+$('.btnEx1').click( function(){
 
 var personnage = $(this).html();
 
@@ -143,10 +169,9 @@ $.ajax({
       $('#producteur').text(response.producteur);
     }
 });
-
-
-
 });
+
+
 });
 </script>
 
